@@ -1,0 +1,26 @@
+{
+  "name": "Demo-Extension",
+  "version": "1.0.0",
+  "description": "",
+
+  "scripts": {
+    "prebuild": "rm -rf dist .cache .parcel-cache",
+    "build:tailwind": "tailwindcss build src\\style.css -c .\\tailwind.config.js -o dist\\style.css",
+    "watch": "set NODE_ENV=development npm run-script build:tailwind && cp src\\manifest.json dist\\ && npx parcel watch --no-hmr src\\{background.js,content-script.js}",
+    "build": "set NODE_ENV=production npm run-script build:tailwind && cp src\\manifest.json dist\\ && npx parcel build src\\{background.js,content-script.js}",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zip": "zip -r chrome-extension.zip .\\dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.1.0",
+    "parcel": "^2.0.0-nightly.486",
+    "postcss-import": "^14.0.0"
+  },
+  "dependencies": {
+    "crx-hotreload": "^1.0.6",
+    "tailwindcss": "^2.0.2"
+  }
+}
